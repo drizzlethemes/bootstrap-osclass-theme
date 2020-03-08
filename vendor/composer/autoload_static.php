@@ -16,12 +16,8 @@ class ComposerStaticInitdccc144a1998436b60c5d9eaf35f644d
     public static $prefixDirsPsr4 = array (
         'App\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/helpers',
+            0 => __DIR__ . '/../..' . '/src',
         ),
-    );
-
-    public static $classMap = array (
-        'App\\helpers\\bodyClass' => __DIR__ . '/../..' . '/helpers/bodyClass.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -29,7 +25,6 @@ class ComposerStaticInitdccc144a1998436b60c5d9eaf35f644d
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitdccc144a1998436b60c5d9eaf35f644d::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitdccc144a1998436b60c5d9eaf35f644d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitdccc144a1998436b60c5d9eaf35f644d::$classMap;
 
         }, null, ClassLoader::class);
     }

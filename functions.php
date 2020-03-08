@@ -1,8 +1,10 @@
 <?php
-require_once('vendor/autoload.php');
+require_once __DIR__ . '/vendor/autoload.php';
+use App\bodyClass;
 
-use App\helpers\bodyClass;
-
+/*
+* Body Class
+*/
 if(!function_exists('drizzle_addBodyClassConstruct')) {
     function drizzle_addBodyClassConstruct($classes){
         $bodyClass = bodyClass::newInstance();
@@ -10,7 +12,6 @@ if(!function_exists('drizzle_addBodyClassConstruct')) {
         return $classes;
     }
 }
-
 if(!function_exists('drizzle_bodyClass')) {
     function drizzle_bodyClass($echo = true){
         /**
@@ -28,7 +29,6 @@ if(!function_exists('drizzle_bodyClass')) {
         }
     }
 }
-
 if(!function_exists('drizzle_addBodyClass')) {
     function drizzle_addBodyClass($class) {
         /**
@@ -41,6 +41,34 @@ if(!function_exists('drizzle_addBodyClass')) {
     }
 }
 
+/*
+* Logo
+*/
+if( !function_exists('drizzle_themeLogo') ) {
+    function drizzle_themeLogo() {
+         $logo = osc_get_preference('logo','bender');
+         $html = '<img alt="' . osc_page_title() . '" src="' . drizzle_logoUrl() . '">';
+         if( $logo!='' && file_exists( osc_uploads_path() . $logo ) ) {
+            return $html;
+         } else {
+            return osc_page_title();
+        }
+    }
+}
+/* logo */
+if( !function_exists('drizzle_logoUrl') ) {
+    function drizzle_logoUrl() {
+        $logo = osc_get_preference('logo','bender');
+        if( $logo ) {
+            return osc_uploads_url($logo);
+        }
+        return false;
+    }
+}
+
+/*
+* Follow Construct
+*/
 if(!function_exists('drizzle_noFollowConstruct')) {
     /**
     * Hook for header, meta tags robots nofollos

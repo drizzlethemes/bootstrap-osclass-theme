@@ -1,21 +1,22 @@
 {
-	"name": "drizzlethemes/bootstrap-osclass-theme",
-    "description": "Bootstrap Osclass Theme - Build with Boostrap v4.4.1 (https://getbootstrap.com)",
-    "version": "1.0.0",
-    "type": "osclass-theme",
-    "license": "MIT",
-	"authors":
-    {
-        "name": "DrizzleThemes",
-        "email": "info@drizzlethemes.com",
-        "homepage": "https://www.drizzlethemes.com"
+    "name": "drizzlethemes/bootstrap",
+    "description": "My first packagist package",
+    "type": "package",
+    "require": {
+        "php": ">=5.3.0"
     },
-    "support": {
-        "email": "support@drizzlethemes.com"
-    },
-	"autoload": {
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your@email.com",
+            "homepage": "http://yourhomepage-if-you-have.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
         "psr-4": {
-            "App\\": "helpers/"
+            "App\\": "src/"
         }
     }
 }
