@@ -5,7 +5,7 @@ drizzle_addBodyClass('home');
 osc_current_web_theme_path('header.php'); ?>
 
 <main>
-	<div class="jumbotron">
+	<section class="jumbotron">
 		<div class="container">
 			<form action="<?php echo osc_base_url(true); ?>" method="get" class="home-search nocsrf">
 				<input type="hidden" name="page" value="search" />
@@ -22,7 +22,13 @@ osc_current_web_theme_path('header.php'); ?>
 				</div>
 			</form>
 		</div>
-	</div>
+	</section>
+
+	<section>
+		<div class="container">
+			<?php echo drizzle_categoryList(); ?>
+		</div>
+	</section>
 </main>
 
 <?php osc_current_web_theme_path('footer.php'); ?>

@@ -24,11 +24,11 @@
 			<a class="navbar-brand" href="<?php echo osc_base_url(); ?>">
 				<?php echo drizzle_themeLogo(); ?>
 			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenus">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse" id="navbarMenus">
 				<ul class="navbar-nav ml-auto">
 					<?php if( osc_users_enabled() ) { ?>
 	        		<?php if( osc_is_web_user_logged_in() ) { ?>
