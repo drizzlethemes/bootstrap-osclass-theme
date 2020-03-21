@@ -2,6 +2,13 @@ body {
 	font-size: 14px;
 }
 
+.main-navigation .navbar-nav>li>.nav-link {
+	padding: 0.5rem 1rem;
+}
+
+main {
+	min-height: 750px;
+}
 .home-search .form-control-lg,
 .home-search .btn-lg {
 	font-size: 110%;
@@ -10,7 +17,21 @@ body {
     height: 100%;
 }
 
+.home-categories h5 a {
+	color: #222;
+}
+.category-count {
+	font-size: 90%;
+}
+
 .footer-nav a {
 	padding: 0 0.5rem;
 	font-weight: 500;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
 }

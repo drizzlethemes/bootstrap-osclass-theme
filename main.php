@@ -24,7 +24,7 @@ osc_current_web_theme_path('header.php'); ?>
 		</div>
 	</section>
 
-	<section>
+	<section class="home-categories">
 		<div class="container">
 			<?php echo drizzle_categoryList(); ?>
 		</div>

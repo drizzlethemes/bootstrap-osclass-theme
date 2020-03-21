@@ -20,7 +20,7 @@
 <body <?php drizzle_bodyClass(); ?>>
 <header class="bg-dark">
 	<div class="container">
-		<nav class="navbar pl-0 pr-0 navbar-expand-lg navbar-dark">
+		<nav class="navbar pl-0 pr-0 navbar-expand-lg main-navigation navbar-dark">
 			<a class="navbar-brand" href="<?php echo osc_base_url(); ?>">
 				<?php echo drizzle_themeLogo(); ?>
 			</a>
@@ -56,7 +56,7 @@
 	        		<?php } ?>
 	        		<?php } ?>
 					<li class="nav-item">
-						<a class="nav-link btn btn-primary" role="button" href="<?php echo osc_item_post_url(); ?>">Publish an Ad</a>
+						<a class="nav-link btn btn-success text-white" role="button" href="<?php echo osc_item_post_url(); ?>">Publish an Ad</a>
 					</li>
 				</ul>
 			</div>

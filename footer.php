@@ -19,7 +19,7 @@
 		        <?php } ?>
 		    </div>
 		    <div class="col-auto ml-auto">
-		    	<a href="#">Back to Top &uarr;</a>
+		    	<a class="back-to-top btn btn-sm btn-light" href="#">Back to Top &uarr;</a>
 		    </div>
 		</div>
 	</div>
@@ -37,6 +37,23 @@ $(document).ready(function() {
     $('select').addClass('form-control');
     $('.home-search select[name=sCategory]').addClass('form-control-lg');
     $('textarea').addClass('form-control');
+    $('input[type=checkbox]').addClass('form-check-input');
+
+    //Scroll to Top
+    $(window).scroll(function () {
+		if ($(this).scrollTop() > 50) {
+			$('.back-to-top').fadeIn();
+		} else {
+			$('.back-to-top').fadeOut();
+		}
+	});
+	// scroll body to 0px on click
+	$('.back-to-top').click(function () {
+		$('body,html').animate({
+			scrollTop: 0
+		}, 400);
+		return false;
+	});
 });
 </script>
 </body>

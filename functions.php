@@ -74,21 +74,21 @@ if( !function_exists('drizzle_categoryList') ) {
         <div class="d-flex row flex-row flex-wrap">
         <?php while ( osc_has_categories() ) {
             $parentCategoryId = osc_category_id(); ?>
-            <div class="col-12 col-sm-6 col-md-3 navbar-expand-lg">
-            <h4>
+            <div class="col-12 col-sm-6 col-md-3 mb-4 category-container navbar-expand-lg">
+            <h5>
                 <a href="<?php echo osc_search_category_url() ; ?>"><?php echo osc_category_name(); ?></a>
-                <span class="text-muted">(<?php echo osc_category_total_items(); ?>)</span>
+                <span class="category-count text-muted">(<?php echo osc_category_total_items(); ?>)</span>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categoryList<?php echo osc_category_id(); ?>">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-            </h4>
+            </h5>
             <?php if ( osc_count_subcategories() > 0 ) { ?>
-            <div class="collapse navbar-collapse" id="categoryList<?php echo $parentCategoryId; ?>">
+            <div class="collapse navbar-collapse sub-categories-container" id="categoryList<?php echo $parentCategoryId; ?>">
                 <ul class="list-unstyled">
                     <?php while ( osc_has_subcategories() ) { ?>
                         <li>
                             <a href="<?php echo osc_search_category_url() ; ?>"><?php echo osc_category_name(); ?></a>
-                            <span class="text-muted">(<?php echo osc_category_total_items(); ?>)</span>
+                            <span class="category-count text-muted">(<?php echo osc_category_total_items(); ?>)</span>
                         </li>
                     <?php } ?>
                 </ul>
