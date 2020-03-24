@@ -24,9 +24,41 @@ main {
 	font-size: 90%;
 }
 
+.listing-card div:first-child {
+	border-right: 1px solid #eee;
+}
+.listing-card .card-img {
+	border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.listing-card h5.card-title {
+	font-size: 1rem;
+}
+
 .footer-nav a {
 	padding: 0 0.5rem;
 	font-weight: 500;
+}
+
+/*
+* Common CSS
+*/
+.flashmessage {
+	position: relative;
+	padding: .75rem 1.25rem;
+	margin-bottom: 1rem;
+	border: 1px solid transparent;
+	border-radius: .25rem;
+}
+.flashmessage-ok {
+	color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.flashmessage-error {
+	color: #721c24;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
 }
 
 .back-to-top {
@@ -34,4 +66,87 @@ main {
     bottom: 25px;
     right: 25px;
     display: none;
+}
+
+/*
+* Reset - Fine Uploader CSS
+*/
+#restricted-fine-uploader .flashmessage {
+	margin-top: 0.5rem;
+}
+.qq-uploader {
+	width: 100%;
+}
+.qq-upload-button {
+	background: #f7f7f7;
+	color: #999;
+    border: 2px dashed #ddd;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+.qq-upload-button-hover,
+.qq-upload-button-focus {
+	background: #eee;
+	outline: none;
+}
+.qq-upload-list {
+ 	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+ }
+.qq-upload-list li {
+	width: 25%;
+	height: 180px;
+	background: #f7f7f7!important;
+    border: 2px dashed #ddd;
+    color: #333!important;
+}
+.qq-upload-file {
+    margin: 0;
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    word-break: break-all;
+}
+.qq-upload-size {
+	color: rgba(0,0,0,.5) !important;
+}
+.qq-upload-delete,
+.qq-upload-retry {
+	color: #dc3545 !important;
+}
+.qq-upload-status-text {
+	display: block;
+}
+.qq-upload-list li .primary_image {
+	margin-top:0.5rem
+}
+.qq-upload-list li .primary_image>a,
+.qq-upload-status-text {
+	display: block;
+	color: #856404;
+	background-color: #fff3cd;
+	border: 1px solid #ffeeba;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 1px 2px;
+    font-weight: 500;
+    margin-top: 0.2rem;
+}
+.qq-upload-list li .primary_image>a:hover {
+	color: #ab4700;
+}
+.qq-upload-list .ajax_preview_img {
+	background-color: #fff3cd;
+	border:1px solid #ffeeba;
+	height: 100px;
+	overflow: hidden;
+}
+.qq-upload-list .ajax_preview_img img {
+	display: flex;
+    width: 100%;
+    margin: 0 auto;
 }

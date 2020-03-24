@@ -100,6 +100,82 @@ if( !function_exists('drizzle_categoryList') ) {
     <?php }
 }
 
+function drizzle_searchSidebarCategory($catId = null) {
+    $aCategories = array();
+    if($catId==null) {
+        $aCategories[] = Category::newInstance()->findRootCategoriesEnabled();
+    } else {
+        // if parent category, only show parent categories
+        $aCategories = Category::newInstance()->toRootTree($catId);
+        end($aCategories);
+        $cat = current($aCategories);
+        // if is parent of some category
+        $childCategories = Category::newInstance()->findSubcategoriesEnabled($cat['pk_i_id']);
+        if(count($childCategories) > 0) {
+            $aCategories[] = $childCategories;
+        }
+    }
+
+    if(count($aCategories) == 0) {
+        return "";
+    }
+
+    drizzle_printSearchSidebarCategory($aCategories, $catId);
+}
+
+function drizzle_printSearchSidebarCategory($aCategories, $current_category = null, $i = 0) {
+    $class = '';
+    if(!isset($aCategories[$i])) {
+        return null;
+    }
+
+    if($i===0) {
+        $class = 'class="category"';
+    }
+
+    $c   = $aCategories[$i];
+    $i++;
+    if(!isset($c['pk_i_id'])) {
+        echo '<ul '.$class.'>';
+        if($i==1) {
+            echo '<li><a href="'.osc_esc_html(osc_update_search_url(array('sCategory'=>null, 'iPage'=>null))).'">'.__('All categories', 'bender')."</a></li>";
+        }
+        foreach($c as $key => $value) {
+    ?>
+            <li>
+                <a id="cat_<?php echo osc_esc_html($value['pk_i_id']);?>" href="<?php echo osc_esc_html(osc_update_search_url(array('sCategory'=> $value['pk_i_id'], 'iPage'=>null))); ?>">
+                <?php if(isset($current_category) && $current_category == $value['pk_i_id']){ echo '<strong>'.$value['s_name'].'</strong>'; }
+                else{ echo $value['s_name']; } ?>
+                </a>
+
+            </li>
+    <?php
+        }
+        if($i==1) {
+        echo "</ul>";
+        } else {
+        echo "</ul>";
+        }
+    } else {
+    ?>
+    <ul <?php echo $class;?>>
+        <?php if($i==1) { ?>
+        <li><a href="<?php echo osc_esc_html(osc_update_search_url(array('sCategory'=>null, 'iPage'=>null))); ?>"><?php _e('All categories', 'bender'); ?></a></li>
+        <?php } ?>
+            <li>
+                <a id="cat_<?php echo osc_esc_html($c['pk_i_id']);?>" href="<?php echo osc_esc_html(osc_update_search_url(array('sCategory'=> $c['pk_i_id'], 'iPage'=>null))); ?>">
+                <?php if(isset($current_category) && $current_category == $c['pk_i_id']){ echo '<strong>'.$c['s_name'].'</strong>'; }
+                      else{ echo $c['s_name']; } ?>
+                </a>
+                <?php drizzle_printSearchSidebarCategory($aCategories, $current_category, $i); ?>
+            </li>
+        <?php if($i==1) { ?>
+        <?php } ?>
+    </ul>
+<?php
+    }
+}
+
 /*
 * Follow Construct
 */
@@ -121,5 +197,85 @@ if( !function_exists('drizzle_followConstruct') ) {
         echo '<meta name="robots" content="index, follow" />' . PHP_EOL;
         echo '<meta name="googlebot" content="index, follow" />' . PHP_EOL;
 
+    }
+}
+
+/*
+* Helpers used at view
+*/
+if( !function_exists('drizzle_itemTitle') ) {
+    function drizzle_itemTitle() {
+        $title = osc_item_title();
+        foreach( osc_get_locales() as $locale ) {
+            if( Session::newInstance()->_getForm('title') != "" ) {
+                $title_ = Session::newInstance()->_getForm('title');
+                if( @$title_[$locale['pk_c_code']] != "" ){
+                    $title = $title_[$locale['pk_c_code']];
+                }
+            }
+        }
+        return $title;
+    }
+}
+if( !function_exists('drizzle_itemDescription') ) {
+    function drizzle_itemDescription() {
+        $description = osc_item_description();
+        foreach( osc_get_locales() as $locale ) {
+            if( Session::newInstance()->_getForm('description') != "" ) {
+                $description_ = Session::newInstance()->_getForm('description');
+                if( @$description_[$locale['pk_c_code']] != "" ){
+                    $description = $description_[$locale['pk_c_code']];
+                }
+            }
+        }
+        return $description;
+    }
+}
+
+if( !function_exists('drizzle_locationShowAs') ){
+    function drizzle_locationShowAs(){
+        return osc_get_preference('defaultLocationShowAs','bootstrap');
+    }
+}
+
+if( !function_exists('drizzle_searchNumber') ) {
+    function drizzle_searchNumber() {
+        $search_from = ((osc_search_page() * osc_default_results_per_page_at_search()) + 1);
+        $search_to   = ((osc_search_page() + 1) * osc_default_results_per_page_at_search());
+        if( $search_to > osc_search_total_items() ) {
+            $search_to = osc_search_total_items();
+        }
+
+        return array(
+            'from' => $search_from,
+            'to'   => $search_to,
+            'of'   => osc_search_total_items()
+        );
+    }
+}
+if( !function_exists('drizzle_defaultShowAs') ){
+    function drizzle_defaultShowAs(){
+        return getPreference('defaultShowAs@all','bootstrap');
+    }
+}
+if( !function_exists('drizzle_showAs') ){
+    function drizzle_showAs(){
+
+        $p_sShowAs    = Params::getParam('sShowAs');
+        $aValidShowAsValues = array('list', 'gallery');
+        if (!in_array($p_sShowAs, $aValidShowAsValues)) {
+            $p_sShowAs = drizzle_defaultShowAs();
+        }
+
+        return $p_sShowAs;
+    }
+}
+if( !function_exists('drizzle_drawItem') ) {
+    function drizzle_drawItem($class = false,$admin = false, $premium = false) {
+        $filename = 'loop-single';
+        if($premium){
+            $filename .='-premium';
+        }
+        require WebThemes::newInstance()->getCurrentThemePath().$filename.'.php';
     }
 }

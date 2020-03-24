@@ -38,6 +38,12 @@ $(document).ready(function() {
     $('.home-search select[name=sCategory]').addClass('form-control-lg');
     $('textarea').addClass('form-control');
     $('input[type=checkbox]').addClass('form-check-input');
+    $('#item-post #plugin-hook').addClass('mt-4');
+    $('.paginate ul').addClass('pagination');
+    $('.paginate ul li').addClass('page-item');
+    $('.paginate ul li .searchPaginationSelected').parent().addClass('active');
+    $('.paginate ul li a').addClass('page-link');
+    $('.paginate ul li span').addClass('page-link');
 
     //Scroll to Top
     $(window).scroll(function () {
