@@ -2,6 +2,9 @@
 require_once __DIR__ . '/vendor/autoload.php';
 use App\bodyClass;
 
+osc_remove_script('jquery');
+osc_register_script('jquery', osc_current_web_theme_url('lib/jquery/jquery-3.2.1.min.js'));
+
 /*
 * Body Class
 */
@@ -46,7 +49,7 @@ if(!function_exists('drizzle_addBodyClass')) {
 */
 if( !function_exists('drizzle_themeLogo') ) {
     function drizzle_themeLogo() {
-         $logo = osc_get_preference('logo','bender');
+         $logo = osc_get_preference('logo','bootstrap');
          $html = '<img alt="' . osc_page_title() . '" src="' . drizzle_logoUrl() . '">';
          if( $logo!='' && file_exists( osc_uploads_path() . $logo ) ) {
             return $html;
@@ -57,7 +60,7 @@ if( !function_exists('drizzle_themeLogo') ) {
 }
 if( !function_exists('drizzle_logoUrl') ) {
     function drizzle_logoUrl() {
-        $logo = osc_get_preference('logo','bender');
+        $logo = osc_get_preference('logo','bootstrap');
         if( $logo ) {
             return osc_uploads_url($logo);
         }
@@ -130,7 +133,7 @@ function drizzle_printSearchSidebarCategory($aCategories, $current_category = nu
     }
 
     if($i===0) {
-        $class = 'class="category"';
+        $class = 'class="category list-unstyled"';
     }
 
     $c   = $aCategories[$i];
@@ -138,7 +141,7 @@ function drizzle_printSearchSidebarCategory($aCategories, $current_category = nu
     if(!isset($c['pk_i_id'])) {
         echo '<ul '.$class.'>';
         if($i==1) {
-            echo '<li><a href="'.osc_esc_html(osc_update_search_url(array('sCategory'=>null, 'iPage'=>null))).'">'.__('All categories', 'bender')."</a></li>";
+            echo '<li><a href="'.osc_esc_html(osc_update_search_url(array('sCategory'=>null, 'iPage'=>null))).'">'.__('All categories', 'bootstrap')."</a></li>";
         }
         foreach($c as $key => $value) {
     ?>
@@ -160,7 +163,7 @@ function drizzle_printSearchSidebarCategory($aCategories, $current_category = nu
     ?>
     <ul <?php echo $class;?>>
         <?php if($i==1) { ?>
-        <li><a href="<?php echo osc_esc_html(osc_update_search_url(array('sCategory'=>null, 'iPage'=>null))); ?>"><?php _e('All categories', 'bender'); ?></a></li>
+        <li><a href="<?php echo osc_esc_html(osc_update_search_url(array('sCategory'=>null, 'iPage'=>null))); ?>"><?php _e('All categories', 'bootstrap'); ?></a></li>
         <?php } ?>
             <li>
                 <a id="cat_<?php echo osc_esc_html($c['pk_i_id']);?>" href="<?php echo osc_esc_html(osc_update_search_url(array('sCategory'=> $c['pk_i_id'], 'iPage'=>null))); ?>">
@@ -277,5 +280,52 @@ if( !function_exists('drizzle_drawItem') ) {
             $filename .='-premium';
         }
         require WebThemes::newInstance()->getCurrentThemePath().$filename.'.php';
+    }
+}
+
+if( !function_exists('drizzle_pageHeader') ) {
+    function drizzle_pageHeader($title = null, $subtitle = null) {
+        if($title != null && $subtitle != null) {
+            return '<h2>'.$title.'</h2><p class="lead">'.$subtitle.'</p>';
+        } else if($title != null) {
+            return '<h2>'.$title.'</h2>';
+        } else if($subtitle != null) {
+            return '<p class="lead">'.$subtitle.'</p>';
+        } else {
+            return null;
+        }
+    }
+}
+if( !function_exists('drizzle_pageTitle') ) {
+    function drizzle_pageTitle() {
+        $title = '';
+        return (osc_apply_filter('drizzle_page_title', $text));
+    }
+}
+
+if( !function_exists('drizzle_breadcrumbTexts') ) {
+    function drizzle_breadcrumbTexts() {
+        $lang = array();
+        $lang['item_add']               = __('Publish a listing', 'bender');
+        $lang['item_edit']              = __('Edit your listing', 'bender');
+        $lang['item_send_friend']       = __('Send to a friend', 'bender');
+        $lang['item_contact']           = __('Contact publisher', 'bender');
+        $lang['search']                 = __('Search results', 'bender');
+        $lang['search_pattern']         = __('Search results: %s', 'bender');
+        $lang['user_dashboard']         = __('Dashboard', 'bender');
+        $lang['user_dashboard_profile'] = __("%s's profile", 'bender');
+        $lang['user_account']           = __('Account', 'bender');
+        $lang['user_items']             = __('Listings', 'bender');
+        $lang['user_alerts']            = __('Alerts', 'bender');
+        $lang['user_profile']           = __('Update account', 'bender');
+        $lang['user_change_email']      = __('Change email', 'bender');
+        $lang['user_change_username']   = __('Change username', 'bender');
+        $lang['user_change_password']   = __('Change password', 'bender');
+        $lang['login']                  = __('Login', 'bender');
+        $lang['login_recover']          = __('Recover password', 'bender');
+        $lang['login_forgot']           = __('Change password', 'bender');
+        $lang['register']               = __('Create a new account', 'bender');
+        $lang['contact']                = __('Contact', 'bender');
+        return $lang;
     }
 }

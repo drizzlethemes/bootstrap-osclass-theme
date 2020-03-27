@@ -12,7 +12,7 @@ osc_enqueue_script('jquery-validate');
 osc_current_web_theme_path('header.php') ;
 ?>
 <main class="mb-4">
-    <section class="jumbotron pt-4 pb-4">
+    <section class="bg-light pt-4 pb-4">
         <div class="container text-center">
             <h2><?php _e('Register', 'bootstrap'); ?></h2>
             <p class="lead"><?php _e('Create an account for free', 'bootstrap'); ?></p>

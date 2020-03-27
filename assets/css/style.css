@@ -24,15 +24,17 @@ main {
 	font-size: 90%;
 }
 
-.listing-card div:first-child {
-	border-right: 1px solid #eee;
-}
+
+.listing-card,
 .listing-card .card-img {
-	border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+	border-radius: 0;
 }
 .listing-card h5.card-title {
 	font-size: 1rem;
+}
+.premium-card {
+	background-color: #fff9c4;
+    border-color: #FFC107;
 }
 
 .footer-nav a {
@@ -43,6 +45,12 @@ main {
 /*
 * Common CSS
 */
+.breadcrumbs {
+	background-color: #e9ecef;
+}
+.breadcrumbs li a {
+	color: #777;
+}
 .flashmessage {
 	position: relative;
 	padding: .75rem 1.25rem;
@@ -60,7 +68,9 @@ main {
 	background-color: #f8d7da;
 	border-color: #f5c6cb;
 }
-
+label, button {
+	font-weight: 500!important;
+}
 .back-to-top {
     position: fixed;
     bottom: 25px;
@@ -149,4 +159,15 @@ main {
 	display: flex;
     width: 100%;
     margin: 0 auto;
+}
+
+/* Bootstrap Reset */
+.breadcrumb {
+	background-color: transparent;
+	margin: 0;
+	border-radius:0;
+	padding: 0.7rem 0;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+	color: #999;
 }

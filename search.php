@@ -9,7 +9,7 @@ drizzle_addBodyClass('search');
 osc_current_web_theme_path('header.php'); ?>
 
 <main>
-    <section class="jumbotron pt-4 pb-4">
+    <section class="bg-light pt-4 pb-4">
         <div class="container">
             <h2 class="mb-0"><?php echo search_title(); ?></h2>
             <?php if(osc_count_items() > 0) { ?>

@@ -1,5 +1,5 @@
 <?php $size = explode('x', osc_thumbnail_dimensions()); ?>
-<div class="listing-card card mb-2 <?php osc_run_hook("highlight_class"); ?> <?php echo $class; if(osc_item_is_premium()){ echo 'premium'; } ?>">
+<div class="listing-card card mb-2 <?php osc_run_hook("highlight_class"); ?> <?php echo $class; if(osc_item_is_premium()){ echo 'premium-card'; } ?>">
     <div class="row no-gutters">
         <div class="col-4">
         <?php if( osc_images_enabled_at_items() ) { ?>
@@ -15,7 +15,7 @@
                 <h5 class="card-title mb-1">
                     <a href="<?php echo osc_item_url() ; ?>" title="<?php echo osc_esc_html(osc_item_title()) ; ?>"><?php echo osc_item_title() ; ?></a>
                 </h5>
-                <div class="card-text mb-3 text-muted">
+                <div class="card-text mb-2 text-muted">
                     <span class="badge badge-info category"><?php echo osc_item_category() ; ?></span>
                     <span class="badge badge-secondary location"><?php echo osc_item_city(); ?><?php if( osc_item_region()!='' ) { ?> (<?php echo osc_item_region(); ?>)<?php } ?></span>
                     <span class="badge badge-light"><?php echo osc_format_date(osc_item_pub_date()); ?></span>

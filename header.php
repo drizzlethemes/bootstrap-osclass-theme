@@ -63,5 +63,23 @@
 		</nav>
 	</div>
 </header>
+<?php /* DON'T DELETE
+if(drizzle_pageTitle() != null) { ?>
+<section class="jumbotron pt-4 pb-4">
+    <div class="container text-center">
+    	<?php echo drizzle_pageTitle(); ?>
+    </div>
+</section>
+<?php }*/ ?>
+<!-- Breadcrumb -->
+<?php $breadcrumb = osc_breadcrumb('', false, drizzle_breadcrumbTexts());
+    if( $breadcrumb !== '') { ?>
+    <div class="breadcrumbs">
+    	<div class="container">
+	        <?php echo $breadcrumb; ?>
+	    </div>
+    </div>
+<?php } ?>
 
+<!-- Flash notification message -->
 <?php osc_show_flash_message(); ?>

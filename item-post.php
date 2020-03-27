@@ -21,7 +21,7 @@ if (drizzle_locationShowAs() == 'dropdown') {
 } ?>
 
 <main class="mb-4">
-    <section class="jumbotron pt-4 pb-4">
+    <section class="bg-light pt-4 pb-4">
         <div class="container text-center">
             <h2><?php _e('Publish a listing', 'bootstrap'); ?></h2>
         </div>

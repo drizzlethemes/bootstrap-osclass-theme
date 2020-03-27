@@ -10,14 +10,14 @@ if(!isset($category['pk_i_id']) ) {
 		<?php //osc_alert_form(); ?>
 		<div class="widget">
 			<div class="widget-content widget-category-filter p-3">
-				<h6><?php _e('Category', 'bootstrap') ; ?></h6>
-	    		<?php drizzle_searchSidebarCategory($category['pk_i_id']); ?>
+				<h5><?php _e('Category', 'bootstrap') ; ?></h5>
+				<?php drizzle_searchSidebarCategory($category['pk_i_id']); ?>
 			</div>
 		</div>
 		<!-- /Category filter -->
 		<div class="widget">
 			<div class="widget-content widget-search-filter p-3">
-				<h6><?php _e('Filter', 'bootstrap') ; ?></h6>
+				<h5><?php _e('Filter', 'bootstrap') ; ?></h5>
 	    		<form action="<?php echo osc_base_url(true); ?>" method="get" class="nocsrf">
 			        <input type="hidden" name="page" value="search"/>
 			        <input type="hidden" name="sOrder" value="<?php echo osc_search_order(); ?>" />

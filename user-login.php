@@ -2,10 +2,16 @@
 osc_add_hook('header', 'drizzle_noFollowConstruct');
 drizzle_addBodyClass('login');
 
+/* DON'T DELETE
+osc_add_filter('drizzle_page_title', 'drizzle_addPagetitle');
+function drizzle_addPagetitle() {
+    return drizzle_pageHeader('Login', 'Access to your account');
+}*/
+
 osc_current_web_theme_path('header.php'); ?>
 
 <main class="mb-4">
-    <section class="jumbotron pt-4 pb-4">
+    <section class="bg-light pt-4 pb-4">
         <div class="container text-center">
             <h2><?php _e('Login', 'bootstrap'); ?></h2>
             <p class="lead"><?php _e('Access to your account', 'bootstrap'); ?></p>
