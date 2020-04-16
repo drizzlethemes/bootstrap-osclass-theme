@@ -3,11 +3,13 @@
     <div class="row no-gutters">
         <div class="col-4">
         <?php if( osc_images_enabled_at_items() ) { ?>
+            <a href="<?php echo osc_premium_url() ; ?>">
             <?php if(osc_count_premium_resources()) { ?>
                 <img src="<?php echo osc_resource_thumbnail_url(); ?>" class="card-img" alt="<?php echo osc_esc_html(osc_premium_title()) ; ?>" width="<?php echo $size[0]; ?>" height="<?php echo $size[1]; ?>">
             <?php } else { ?>
                 <img src="<?php echo osc_current_web_theme_url('images/no_photo.jpg'); ?>" class="card-img" alt="<?php echo osc_esc_html(osc_premium_title()) ; ?>" width="<?php echo $size[0]; ?>" height="<?php echo $size[1]; ?>">
             <?php } ?>
+            </a>
         <?php } ?>
         </div>
         <div class="col">
